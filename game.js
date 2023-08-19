@@ -4,13 +4,21 @@ var UserClickedPattern = [];
 var started = false;
 var level = 0;
 
-$(document).keypress(function() {
-    if(!started){
+function startGame() {
+    if (!started) {
         $("#level-title").text("Nivel " + level);
         NextSequence();
         started = true;
     }
-})
+}
+
+$(document).keypress(function(event) {
+    startGame();
+});
+
+$("body").click(function() {
+    startGame();
+});
 
 $(".btn").click(function() {
     var UserChosenColour = $(this).attr("id");
